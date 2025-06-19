@@ -12,6 +12,20 @@ async function getMessages(req, res) {
     }
 }
 
+async function postMessages(req,res) {
+
+    const {name, message} = req.body;
+
+    try{
+        const id = await messageService.createMessages(name, message);
+        res.status(201).json({message: 'Message posted successfully', id });
+    } catch (error){
+        console.error('Error posting message: ', error);
+        res.status(400).json({ error: error.message || 'Failed to post message' });
+    }
+}
+
 module.exports = {
     getMessages,
+    postMessages
 };

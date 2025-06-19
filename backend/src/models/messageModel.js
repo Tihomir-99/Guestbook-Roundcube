@@ -8,6 +8,17 @@ async function getMessages(limit = 10, offset = 0) {
     return rows;
 }
 
+async function addMessage(name,message){
+    const [result] = await db.query(
+        `INSERT INTO messages (name,message)
+        VALUES(?,?)
+        `,
+        [name,message]
+    );
+    return result.insertId;
+}
+
 module.exports = {
     getMessages,
+    addMessage
 };
