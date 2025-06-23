@@ -44,9 +44,9 @@ Guestbook-Roundcube/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Guestbook-Roundcube.git
+git clone https://github.com/Tihomir-99/Guestbook-Roundcube.git
 cd Guestbook-Roundcube
-```
+``` 
 
 ---
 
