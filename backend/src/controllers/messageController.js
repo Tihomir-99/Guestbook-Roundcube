@@ -5,7 +5,9 @@ async function getMessages(req, res) {
 
     try {
         const messages = await messageService.fetchMessages(page);
-        res.status(200).json(messages);
+        const nextPageMessages = await messageService.fetchMessages(page+1);
+        const hasNextPage = nextPageMessages.length > 0;
+        res.status(200).json({messages, hasNextPage});
     } catch (error) {
         console.error('Error fetching messages:', error);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -15,6 +17,8 @@ async function getMessages(req, res) {
 async function postMessages(req,res) {
 
     const {name, message} = req.body;
+
+    console.log(req.body);
 
     try{
         const id = await messageService.createMessages(name, message);

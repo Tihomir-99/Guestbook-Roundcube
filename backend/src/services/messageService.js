@@ -6,9 +6,8 @@ async function fetchMessages(page = 1, pageSize = 10) {
 }
 
 async function createMessages(name,message){
-
-    //Some custom validation since its not described in the task
-    if(!name || !message || name.length > 50 || message.length > 1000){
+    //Some custom validation since its not described in the tas
+    if (!name || !message || name.length > 50 || message.length > 1000) {
         throw new Error("Invalid input");
     }
 
